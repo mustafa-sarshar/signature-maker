@@ -1,7 +1,15 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
 .clearfix {
   display: table;
   content: "";
   clear: both;
+}
+
+html {
+  background-color: #000000;
 }
 
 .page-header {
@@ -9,7 +17,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(226, 206, 21, 0.3490196078);
+  background-color: #a09e8e;
   height: 90px;
 }
 .page-header__logo {
@@ -22,10 +30,12 @@
   height: 100vh;
   padding-top: 100px;
   padding-bottom: 90px;
-  background-color: darkgray;
+  background-color: #94927c;
 }
 .page-main__title {
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
 }
 .page-footer {
   position: fixed;
@@ -35,20 +45,92 @@
   height: 80px;
   padding: 10px;
   text-align: center;
-  background-color: rgba(226, 206, 21, 0.3490196078);
+  background-color: #a09e8e;
 }
 
 .draw-container {
-  position: relative;
-  height: calc(100vh - 10px);
-  border: 1px solid black;
+  margin: 10 auto;
+  text-align: center;
 }
 .draw-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  height: 60%;
-  transform: translate(-50%, -50%);
+  margin: 10px auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border: 1px solid;
+}
+.draw__btn-reset, .draw__btn-save {
+  border: none;
+  margin: 10px auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.draw__canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.tools-wrapper {
+  width: 100%;
+}
+.tools__stroke-style {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto;
+}
+.tools__color-box {
+  margin: 10px 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  box-shadow: 1px 1px 4px black;
+  cursor: pointer;
+}
+.tools__color-box:hover {
+  opacity: 0.5;
+}
+.tools__color-box.black {
+  background-color: black;
+}
+.tools__color-box.white {
+  background-color: white;
+}
+.tools__color-box.red {
+  background-color: red;
+}
+.tools__color-box.green {
+  background-color: green;
+}
+.tools__color-box.blue {
+  background-color: blue;
+}
+.tools__line-join {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto;
+}
+.tools__line-join__options {
+  margin: 10px 10px;
+  padding: 2px;
+  width: 90px;
+  height: 30px;
+  border: none;
+  box-shadow: 1px 1px 4px black;
+  cursor: pointer;
+}
+.tools__line-width {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.active {
+  transform: scale(0.8);
 }/*# sourceMappingURL=styles.css.map */

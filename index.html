@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS Reset / Normalize CSS -->
-    <link rel="stylesheet" href="./assets/css/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/close_button_sign.png" type="image/x-icon">
+    <!-- [if lte IE 8]><script type="text/javascript" src="./assets/js/excanvas.js"></script><![endif]  -->
     <title>Signature Maker</title>
 </head>
 <body>
@@ -20,10 +21,31 @@
         <div class="clearfix"></div>
     </header>
     <main class="page-main">
-        <h1 class="page-main__title">Draw your signature below</h1>
+        <h1 class="page-main__title">Draw your signature</h1>
         <div class="draw-container">
-            <div class="draw-wrapper">
-                <canvas class="draw__canvas"></canvas>
+            <div class="draw-wrapper"></div>
+            <div class="tools-wrapper">
+                <div class="tools__stroke-style">
+                    <button class="tools__color-box black"></button>
+                    <button class="tools__color-box white"></button>
+                    <button class="tools__color-box red active"></button>
+                    <button class="tools__color-box green"></button>
+                    <button class="tools__color-box blue"></button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tools__line-join">
+                    <button class="tools__line-join__options active">ROUND</button>
+                    <button class="tools__line-join__options">BEVEL</button>
+                    <button class="tools__line-join__options">MITER</button>
+                </div>
+                <div class="tools__line-width">
+                    <label for="line-width">Line Width: (<span id="current-line-width"></span>px) </label><br>
+                    <input type="range" value="20" min="1" max="100" step="5" name="line-width" id="line-width__slider" class="tools__line-width__slider">
+                </div>
+            </div>
+            <div class="draw__btn-wrapper">
+                <button class="draw__btn-reset">RESET</button>
+                <button class="draw__btn-save">SAVE</button>
             </div>
         </div>
     </main>
