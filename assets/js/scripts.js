@@ -29,7 +29,7 @@ if (typeof G_vmlCanvasManager != "undefined") {
 }
 const context = canvasEl.getContext("2d");
 
-canvasEl.addEventListener("mousedown", (evt) => {
+canvasEl.addEventListener("pointerdown", (evt) => {
     if (evt.target === canvasEl) {      
         const mouseX = getMousePositions(evt)["mouseX"];
         const mouseY = getMousePositions(evt)["mouseY"];
@@ -43,7 +43,7 @@ canvasEl.addEventListener("mousedown", (evt) => {
     }
 })
 
-canvasEl.addEventListener("mousemove", (evt) => {
+canvasEl.addEventListener("pointermove", (evt) => {
     if (evt.target === canvasEl) {
         if (paint) {
             const mouseX = getMousePositions(evt)["mouseX"];
