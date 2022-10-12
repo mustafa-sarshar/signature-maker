@@ -54,6 +54,9 @@ html {
   text-align: center;
   background-color: #a09e8e;
 }
+.page-footer * {
+  margin: 0 auto;
+}
 
 .draw-container {
   margin: 10 auto;

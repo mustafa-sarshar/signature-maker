@@ -75,6 +75,10 @@ img, video, iframe, canvas, svg {
         padding: 10px;
         text-align: center;
         background-color: $color-page-header-footer__bg;
+
+        * {
+            margin: 0 auto;
+        }
     }
 }
 
