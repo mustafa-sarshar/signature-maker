@@ -1,5 +1,6 @@
 $color-page-header-footer__bg: #a09e8e;
 $color-page-main__bg: #94927c;
+$color-border: #d3d3d39a;
 
 $size-page-header__height--v1: 90px;
 $size-page-footer__height: 80px;
@@ -7,6 +8,20 @@ $size-additional-height: 10px;
 
 @mixin dark-mode {
     // filter: invert(1) hue-rotate(100deg);
+}
+
+@mixin element-style--1 {
+    border: none;
+    margin: 1px auto;
+    padding: 2px 10px;
+    border-radius: 5px;
+    height: 1.5rem;
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(.95);
+    }
 }
 
 *, *::after, *::before {
@@ -62,7 +77,7 @@ img, video, iframe, canvas, svg {
         &__title {
             text-align: center;
             padding-bottom: 10px;
-            border-bottom: 1px solid;
+            border-bottom: 1px solid $color-border;
         }
     }
 
@@ -92,16 +107,19 @@ img, video, iframe, canvas, svg {
         margin: 10px auto;
         width: fit-content;
         height: fit-content;
-        border: 1px solid;
+        border: 1px solid $color-border;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.753);
+    }
+
+    &__btn-wrapper {
+        width: fit-content;
+        margin: 0 auto;
     }
 
     &__btn-reset,
     &__btn-save {
-        border: none;
-        margin: 10px auto;
-        padding: 5px 10px;
-        border-radius: 5px;
-        cursor: pointer;
+        @include element-style--1();
+        width: auto;
     }
 
     &__canvas {
@@ -109,9 +127,30 @@ img, video, iframe, canvas, svg {
     }
 }
 
-.tools {
+.settings {
     &-wrapper {
         width: 100%;
+        padding: 10px;
+    }
+
+    &__draw-size {
+        width: fit-content;
+        margin: 0 auto;
+
+        input {
+            @include element-style--1();
+            cursor: auto;
+        }
+
+        &__title {
+            margin: 5px auto;
+            border-bottom: 1px solid $color-border;
+        }
+
+        &__btn-set {
+            @include element-style--1();
+            width: 100px;
+        }
     }
 
     &__stroke-style {
@@ -152,12 +191,10 @@ img, video, iframe, canvas, svg {
         margin: 10px auto;
 
         &__options {
+            @include element-style--1();
             margin: 10px 10px;
-            padding: 2px;
             width: 90px;
-            height: 30px;
-            border: none;
-            box-shadow: 1px 1px 4px black;
+            border: none;            
             cursor: pointer;
         }
     }

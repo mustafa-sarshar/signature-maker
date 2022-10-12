@@ -13,16 +13,21 @@ const objDraw = {
 const objOptions = {
     curStrokeStyle: "red",
     curLineJoin: "round",
-    curLineWidth: 20
+    curLineWidth: 15
 }
 
 let mouseXOld = 0;
 let mouseYOld = 0;
 
+let objDrawSize = {
+    width: "300",
+    height: "400"
+}
+
 const canvasDivEl = document.querySelector(".draw-wrapper");
 const canvasEl = document.createElement("canvas");
-canvasEl.setAttribute("width", "300");
-canvasEl.setAttribute("height", "400");
+canvasEl.setAttribute("width", objDrawSize["width"]);
+canvasEl.setAttribute("height", objDrawSize["height"]);
 canvasEl.setAttribute("id", "canvas");
 canvasEl.classList.add("draw__canvas");
 canvasDivEl.appendChild(canvasEl);
@@ -118,7 +123,7 @@ function inactiveAll(elements) {
 }
 
 // Stroke Style Event Listener *********
-const colorsEl = document.querySelectorAll(".tools__color-box");
+const colorsEl = document.querySelectorAll(".settings__color-box");
 colorsEl.forEach((item) => {
     item.addEventListener("click", (evt) => {
         if (item.classList.contains("black"))
@@ -146,7 +151,7 @@ lineWidthSliderEl.oninput = function () {
 }
 
 // Line Join Button Event Listener *********
-const lineJoinEl = document.querySelectorAll(".tools__line-join__options");
+const lineJoinEl = document.querySelectorAll(".settings__line-join__options");
 lineJoinEl.forEach((item) => {
     item.addEventListener("click", (evt) => {
         if (item.innerText === "ROUND")
@@ -181,3 +186,49 @@ saveBtnEl.addEventListener("click", (evt) => {
     linkEl.click();
     linkEl.delete;
 })
+
+// Draw Size Event Listener
+let validDrawSize = true;
+const drawSizeWidthEl = document.querySelector("#draw-size__width");
+const drawSizeHeightEl = document.querySelector("#draw-size__height");
+const btnDrawSizeSetEl = document.querySelector(".settings__draw-size__btn-set");
+const drawSizeTitleEl = document.querySelector("#current-draw-size");
+
+function updateDrawSizeTitle() {
+    drawSizeTitleEl.innerText = `${objDrawSize["width"]} x ${objDrawSize["height"]}`;
+    drawSizeWidthEl.style.color = "black";
+    drawSizeHeightEl.style.color = "black";
+}
+
+drawSizeWidthEl.value = objDrawSize["width"];
+drawSizeHeightEl.value = objDrawSize["height"];
+updateDrawSizeTitle();
+
+function validateDrawSize(evt) {
+    const targetEl = evt.target;
+    const targetValue = targetEl.value;
+    if (targetValue >= 5 && targetValue <= 500) {
+        targetEl.style.color = "green";
+        validDrawSize = true;
+    } else {
+        targetEl.style.color = "red";
+        validDrawSize = false
+    }
+}
+
+drawSizeWidthEl.addEventListener("input", validateDrawSize);
+drawSizeHeightEl.addEventListener("input", validateDrawSize);
+btnDrawSizeSetEl.addEventListener("click", (evt) => {
+    const sizeWidth = drawSizeWidthEl.value;
+    const sizeHeight = drawSizeHeightEl.value;
+
+    if (validDrawSize) {
+        canvasEl.width = sizeWidth;
+        canvasEl.height = sizeHeight;
+        objDrawSize["width"] = sizeWidth;
+        objDrawSize["height"] = sizeHeight;
+        updateDrawSizeTitle();
+        redraw();
+    }
+})
+

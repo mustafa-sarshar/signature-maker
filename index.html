@@ -24,24 +24,35 @@
     <main class="page-main">
         <h1 class="page-main__title">Draw your signature</h1>
         <div class="draw-container">
+            <div class="settings-wrapper">
+                <div class="settings__draw-size">
+                    <p class="settings__draw-size__title">Draw Size: (<span id="current-draw-size">### x ###</span> px)</p>
+                    <label for="draw-size__width">Width:</label>
+                    <input type="number" min="5" max="500" name="draw-size__width" id="draw-size__width">
+                    <label for="draw-size__height">Height:</label>
+                    <input type="number" min="5" max="500" name="draw-size__height" id="draw-size__height"><br>
+                    <button class="settings__draw-size__btn-set">Set</button>
+                </div>
+            </div>
             <div class="draw-wrapper"></div>
-            <div class="tools-wrapper">
-                <div class="tools__stroke-style">
-                    <button class="tools__color-box black"></button>
-                    <button class="tools__color-box white"></button>
-                    <button class="tools__color-box red active"></button>
-                    <button class="tools__color-box green"></button>
-                    <button class="tools__color-box blue"></button>
+            <hr>
+            <div class="settings-wrapper">
+                <div class="settings__stroke-style">
+                    <button class="settings__color-box black"></button>
+                    <button class="settings__color-box white"></button>
+                    <button class="settings__color-box red active"></button>
+                    <button class="settings__color-box green"></button>
+                    <button class="settings__color-box blue"></button>
                     <div class="clearfix"></div>
                 </div>
-                <div class="tools__line-join">
-                    <button class="tools__line-join__options active">ROUND</button>
-                    <button class="tools__line-join__options">BEVEL</button>
-                    <button class="tools__line-join__options">MITER</button>
+                <div class="settings__line-join">
+                    <button class="settings__line-join__options active">ROUND</button>
+                    <button class="settings__line-join__options">BEVEL</button>
+                    <button class="settings__line-join__options">MITER</button>
                 </div>
-                <div class="tools__line-width">
+                <div class="settings__line-width">
                     <label for="line-width">Line Width: (<span id="current-line-width"></span>px) </label><br>
-                    <input type="range" value="20" min="1" max="100" step="5" name="line-width" id="line-width__slider" class="tools__line-width__slider">
+                    <input type="range" value="15" min="1" max="100" step="5" name="line-width" id="line-width__slider" class="settings__line-width__slider">
                 </div>
             </div>
             <div class="draw__btn-wrapper">
