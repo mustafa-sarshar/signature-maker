@@ -79,7 +79,7 @@ html {
   width: fit-content;
   margin: 0 auto;
 }
-.draw__btn-reset, .draw__btn-save {
+.draw__btn-reset, .draw__btn-save, .draw__btn-undo {
   border: none;
   margin: 1px auto;
   padding: 2px 10px;
@@ -89,7 +89,7 @@ html {
   cursor: pointer;
   width: auto;
 }
-.draw__btn-reset:hover, .draw__btn-save:hover {
+.draw__btn-reset:hover, .draw__btn-save:hover, .draw__btn-undo:hover {
   transform: scale(0.95);
 }
 .draw__canvas {

@@ -116,10 +116,13 @@ img, video, iframe, canvas, svg {
         margin: 0 auto;
     }
 
-    &__btn-reset,
-    &__btn-save {
-        @include element-style--1();
-        width: auto;
+    &__btn {
+        &-reset,
+        &-save,
+        &-undo {
+            @include element-style--1();
+            width: auto;
+        }
     }
 
     &__canvas {

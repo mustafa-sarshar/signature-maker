@@ -7,7 +7,7 @@ const objDraw = {
     clickDrag: [],
     lstStrokeStyle: [],
     lstLineJoin: [],
-    lstLineWidth: [],
+    lstLineWidth: []
 }
 
 const objOptions = {
@@ -21,7 +21,7 @@ let mouseYOld = 0;
 
 let objDrawSize = {
     width: "300",
-    height: "400"
+    height: "300"
 }
 
 const canvasDivEl = document.querySelector(".draw-wrapper");
@@ -36,7 +36,7 @@ if (typeof G_vmlCanvasManager != "undefined") {
 }
 const context = canvasEl.getContext("2d");
 
-canvasEl.addEventListener("pointerdown", (evt) => {
+canvasEl.addEventListener("pointerdown", function (evt) {
     if (evt.target === canvasEl) {
         const mouseX = getMousePositions(evt)["mouseX"];
         const mouseY = getMousePositions(evt)["mouseY"];
@@ -46,9 +46,9 @@ canvasEl.addEventListener("pointerdown", (evt) => {
         addClick(mouseX, mouseY);
         redraw();
     }
-})
+});
 
-canvasEl.addEventListener("pointermove", (evt) => {
+canvasEl.addEventListener("pointermove", function (evt) {
     if (evt.target === canvasEl) {
         if (paint) {
             const mouseX = getMousePositions(evt)["mouseX"];
@@ -61,17 +61,19 @@ canvasEl.addEventListener("pointermove", (evt) => {
             mouseYOld = mouseY;
         }
     }
-})
+});
 
-canvasEl.addEventListener("mouseup", (evt) => {
-    if (evt.target === canvasEl)
+canvasEl.addEventListener("pointerup", function (evt) {
+    if (evt.target === canvasEl) {
         paint = false;
-})
+    }
+});
 
-canvasEl.addEventListener("mouseleave", (evt) => {
-    if (evt.target === canvasEl)
+canvasEl.addEventListener("pointerleave", function (evt) {
+    if (evt.target === canvasEl) {
         paint = false;
-})
+    }
+});
 
 function addClick(x, y, dragging) {
     objDraw["clickX"].push(x);
@@ -117,7 +119,7 @@ function redraw(){
 }
 
 function inactiveAll(elements) {
-    elements.forEach((el) => {
+    elements.forEach(function(el) {
         el.classList.remove("active");
     })
 }
@@ -125,7 +127,7 @@ function inactiveAll(elements) {
 // Stroke Style Event Listener *********
 const colorsEl = document.querySelectorAll(".settings__color-box");
 colorsEl.forEach((item) => {
-    item.addEventListener("click", (evt) => {
+    item.addEventListener("click", function (evt) {
         if (item.classList.contains("black"))
             objOptions["curStrokeStyle"] = "black";
         else if (item.classList.contains("white"))
@@ -139,7 +141,7 @@ colorsEl.forEach((item) => {
         inactiveAll(colorsEl);
         item.classList.toggle("active");
     })
-})
+});
 
 // Line Width Event Listener *****
 const lineWidthSliderEl = document.querySelector("#line-width__slider");
@@ -153,7 +155,7 @@ lineWidthSliderEl.oninput = function () {
 // Line Join Button Event Listener *********
 const lineJoinEl = document.querySelectorAll(".settings__line-join__options");
 lineJoinEl.forEach((item) => {
-    item.addEventListener("click", (evt) => {
+    item.addEventListener("click", function (evt) {
         if (item.innerText === "ROUND")
             objOptions["curLineJoin"] = "round";
         else if (item.innerText === "BEVEL")
@@ -163,29 +165,62 @@ lineJoinEl.forEach((item) => {
         inactiveAll(lineJoinEl);
         item.classList.toggle("active");
     })
-})
+});
+
+function clearArrays(fromIndex) {
+    if (fromIndex) {
+        console.log(fromIndex);
+        objDraw["clickX"].splice(fromIndex);
+        objDraw["clickY"].splice(fromIndex);
+        objDraw["clickDrag"].splice(fromIndex);
+        objDraw["lstStrokeStyle"].splice(fromIndex);
+        objDraw["lstLineJoin"].splice(fromIndex);
+        objDraw["lstLineWidth"].splice(fromIndex);
+    } else {
+        objDraw["clickX"] = [];
+        objDraw["clickY"] = [];
+        objDraw["clickDrag"] = [];
+        objDraw["lstStrokeStyle"] = [];
+        objDraw["lstLineJoin"] = [];
+        objDraw["lstLineWidth"] = [];
+    }
+}
+
+// Undo Button Event Listener *********
+const undoBtnEl = document.querySelector(".draw__btn-undo");
+undoBtnEl.addEventListener("click", function (evt) {
+    clearArrays(getIndexLastObject());
+    redraw();
+});
+
+function getIndexLastObject() {
+    let lastIndex = objDraw["clickDrag"].length - 1;
+    while (lastIndex > 0) {
+        if (objDraw["clickDrag"][lastIndex] === undefined) {
+            break;
+        } else {
+            lastIndex--;
+        }
+    }
+    return lastIndex
+}
 
 // Reset Button Event Listener *********
 const resetBtnEl = document.querySelector(".draw__btn-reset");
-resetBtnEl.addEventListener("click", (evt) => {
+resetBtnEl.addEventListener("click", function (evt) {
     clearCanvas();
-    objDraw["clickX"] = [];
-    objDraw["clickY"] = [];
-    objDraw["clickDrag"] = [];
-    objDraw["lstStrokeStyle"] = [];
-    objDraw["lstLineJoin"] = [];
-    objDraw["lstLineWidth"] = [];
-})
+    clearArrays();
+});
 
 // Save Button Event Listener *********
 const saveBtnEl = document.querySelector(".draw__btn-save");
-saveBtnEl.addEventListener("click", (evt) => {
+saveBtnEl.addEventListener("click", function (evt) {
     const linkEl = document.createElement("a");
     linkEl.download = "my_signature.png";
     linkEl.href = canvasEl.toDataURL();
     linkEl.click();
     linkEl.delete;
-})
+});
 
 // Draw Size Event Listener
 let validDrawSize = true;
@@ -218,7 +253,7 @@ function validateDrawSize(evt) {
 
 drawSizeWidthEl.addEventListener("input", validateDrawSize);
 drawSizeHeightEl.addEventListener("input", validateDrawSize);
-btnDrawSizeSetEl.addEventListener("click", (evt) => {
+btnDrawSizeSetEl.addEventListener("click", function (evt) {
     const sizeWidth = drawSizeWidthEl.value;
     const sizeHeight = drawSizeHeightEl.value;
 
@@ -230,5 +265,5 @@ btnDrawSizeSetEl.addEventListener("click", (evt) => {
         updateDrawSizeTitle();
         redraw();
     }
-})
+});
 
