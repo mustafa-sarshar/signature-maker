@@ -223,7 +223,6 @@ saveBtnEl.addEventListener("click", function (evt) {
 });
 
 // Draw Size Event Listener
-let validDrawSize = true;
 const drawSizeWidthEl = document.querySelector("#draw-size__width");
 const drawSizeHeightEl = document.querySelector("#draw-size__height");
 const btnDrawSizeSetEl = document.querySelector(".settings__draw-size__btn-set");
@@ -240,6 +239,7 @@ drawSizeHeightEl.value = objDrawSize["height"];
 updateDrawSizeTitle();
 
 function validateDrawSize(evt) {
+    let validDrawSize = true;
     const targetEl = evt.target;
     const targetValue = targetEl.value;
     if (targetValue >= 5 && targetValue <= 500) {
@@ -249,15 +249,9 @@ function validateDrawSize(evt) {
         targetEl.style.color = "red";
         validDrawSize = false
     }
-}
-
-drawSizeWidthEl.addEventListener("input", validateDrawSize);
-drawSizeHeightEl.addEventListener("input", validateDrawSize);
-btnDrawSizeSetEl.addEventListener("click", function (evt) {
-    const sizeWidth = drawSizeWidthEl.value;
-    const sizeHeight = drawSizeHeightEl.value;
-
-    if (validDrawSize) {
+    if(validDrawSize) {
+        const sizeWidth = drawSizeWidthEl.value;
+        const sizeHeight = drawSizeHeightEl.value;
         canvasEl.width = sizeWidth;
         canvasEl.height = sizeHeight;
         objDrawSize["width"] = sizeWidth;
@@ -265,5 +259,8 @@ btnDrawSizeSetEl.addEventListener("click", function (evt) {
         updateDrawSizeTitle();
         redraw();
     }
-});
+}
+
+drawSizeWidthEl.addEventListener("input", validateDrawSize);
+drawSizeHeightEl.addEventListener("input", validateDrawSize);
 

@@ -149,11 +149,6 @@ img, video, iframe, canvas, svg {
             margin: 5px auto;
             border-bottom: 1px solid $color-border;
         }
-
-        &__btn-set {
-            @include element-style--1();
-            width: 100px;
-        }
     }
 
     &__stroke-style {
