@@ -1,10 +1,10 @@
 # signature-maker
 
-This Repo illustrates how to make a web-app to generate signatures.
+- This Repo illustrates how to make a web-app to generate signatures.
 
-This Repo is inspired by:
+- This Repo is inspired by:
 
-- [William Malone](http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/) (accessed on 12.10.2022)
+  - [William Malone](http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/) (accessed on 12.10.2022)
 
 ## OBJECTIVES
 
@@ -16,12 +16,12 @@ This Repo is inspired by:
 
 <table width="100%" style="overflow:auto">
   <tr>
-    <th width="20%" style="text-align:center;">Landing Page</th>
-    <th width="20%" style="text-align:center;">Drawing Signature</th>
+    <th width="50%" style="text-align:center;">Landing Page</th>
+    <th width="50%" style="text-align:center;">Drawing Signature</th>
   </tr>
   <tr>
-    <td width="20%"><img src="https://github.com/mustafa-sarshar/signature-maker/blob/main/docs/images/signature-maker-1.png?raw=true"/></td>
-    <td width="20%"><img src="https://github.com/mustafa-sarshar/signature-maker/blob/main/docs/images/signature-maker-2.png?raw=true"/></td>
+    <td width="50%" style="text-align:center;"><img src="https://github.com/mustafa-sarshar/signature-maker/blob/main/docs/images/signature-maker-1.png?raw=true"/></td>
+    <td width="50%" style="text-align:center;"><img src="https://github.com/mustafa-sarshar/signature-maker/blob/main/docs/images/signature-maker-2.png?raw=true"/></td>
   </tr>
 </table>
 
