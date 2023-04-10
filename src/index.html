@@ -37,12 +37,26 @@
     <div class="draw-container">
       <div class="settings-wrapper">
         <div class="settings__draw-size">
-          <p class="settings__draw-size__title">Draw Size: (<span id="current-draw-size">### x ###</span> px)
-          </p>
-          <label for="draw-size__width">Width:</label>
-          <input type="number" min="5" max="500" name="draw-size__width" id="draw-size__width">
-          <label for="draw-size__height">Height:</label>
-          <input type="number" min="5" max="500" name="draw-size__height" id="draw-size__height">
+          <div class="settings__draw-size__title">
+            <span>
+              Draw Size:
+            </span>
+            <span>
+              <span id="current-draw-size">
+                ### x ###
+              </span> px
+            </span>
+          </div>
+          <div class="settings__draw-size__info">
+            <div>
+              <label for="draw-size__width">Width:</label>
+              <input type="number" min="5" max="500" name="draw-size__width" id="draw-size__width">
+            </div>
+            <div>
+              <label for="draw-size__height">Height:</label>
+              <input type="number" min="5" max="500" name="draw-size__height" id="draw-size__height">
+            </div>
+          </div>
         </div>
       </div>
       <div class="draw-wrapper"></div>

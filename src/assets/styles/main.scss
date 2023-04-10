@@ -3,6 +3,9 @@ $color-page-main__bg: #94927c;
 $color-border: #d3d3d39a;
 
 $size-page-header__height--v1: 90px;
+$size-page-header__width--breakpoint1: 400px;
+$size-page-header__width--breakpoint2: 320px;
+
 $size-page-footer__height: 80px;
 $size-additional-height: 10px;
 
@@ -45,6 +48,7 @@ $size-additional-height: 10px;
 
 html {
   background-color: #000000;
+  font-size: 100%;
   @include dark-mode();
 }
 
@@ -69,6 +73,14 @@ svg {
       margin: 2rem;
       font-size: 2rem;
       font-weight: bold;
+
+      @media all and (max-width: $size-page-header__width--breakpoint1) {
+        font-size: 1.5rem;
+      }
+
+      @media all and (max-width: $size-page-header__width--breakpoint2) {
+        font-size: 1rem;
+      }
 
       a {
         text-decoration: none;
@@ -105,6 +117,14 @@ svg {
       text-align: center;
       padding-bottom: 10px;
       border-bottom: 1px solid $color-border;
+
+      @media all and (max-width: $size-page-header__width--breakpoint1) {
+        font-size: 1.5rem;
+      }
+
+      @media all and (max-width: $size-page-header__width--breakpoint2) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -173,8 +193,21 @@ svg {
     }
 
     &__title {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
       margin: 5px auto;
       border-bottom: 1px solid $color-border;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
   }
 

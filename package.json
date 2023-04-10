@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",
-    "jsdoc": "jsdoc -c jsdoc.json",
+    "docs": "jsdoc -c jsdoc.json",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
